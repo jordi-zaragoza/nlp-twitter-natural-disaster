@@ -6,7 +6,7 @@ test_df = pd.read_csv("../data/test.csv")
 
 params = {
     # ["ridge", "logistic", "random_forest", 'gradient_boosting', 'NN', 'gaussian_process', 'Knn', 'ada_boost']
-    'model_name': ["ridge", "logistic", "random_forest", 'gradient_boosting', 'NN', 'gaussian_process', 'Knn', 'ada_boost'],
+    'model_name': ["ridge", "logistic", "random_forest", 'gradient_boosting', 'NN', 'Knn', 'ada_boost'],
     'mix_texts': [True, False],     # [True, False]
     'clean_texts': [True, False],   # [True, False]
     'vectorization': ["simple", "tfidf"],     # ["simple", "tfidf"]
