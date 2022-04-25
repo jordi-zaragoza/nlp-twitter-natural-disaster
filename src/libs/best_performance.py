@@ -1,4 +1,4 @@
-from src.libs.model import *
+from libs.model import *
 
 
 def best_performance(train_df, test_df, params):
@@ -8,13 +8,17 @@ def best_performance(train_df, test_df, params):
             for clean_texts in params['clean_texts']:
                 for vectorization in params['vectorization']:
                     for use_LSA in params['use_LSA']:
+                        model_params = {
+                            'mix_texts': mix_texts,
+                            'clean_texts': clean_texts,
+                            'vectorization': vectorization,
+                            'use_LSA': use_LSA,
+                            'model_name': model_name
+                        }
+
                         mean, std = get_model_stats(train_df,
                                                     test_df,
-                                                    mix_texts=mix_texts,
-                                                    clean_texts=clean_texts,
-                                                    vectorization=vectorization,
-                                                    use_LSA=use_LSA,
-                                                    model_name=model_name)
+                                                    model_params)
 
                         df = pd.DataFrame({"f1_mean": mean,
                                            "f1_std": std,

@@ -4,5 +4,5 @@ In this repository I try to find the best performance for a model that will pred
 
 It compares different preprocessing methods with other models in order to get the best result for a f1 metrics.
 
-It is part of [this Kaggle competition](https://www.kaggle.com/competitions/nlp-getting-started) about NLP:
+It is part of [this Kaggle competition](https://www.kaggle.com/competitions/nlp-getting-started)
 
