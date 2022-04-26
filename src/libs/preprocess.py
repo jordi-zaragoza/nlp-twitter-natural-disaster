@@ -10,11 +10,12 @@ def preprocess(train_df, test_df, mix_texts=True, clean_texts=True, vectorizatio
     if clean_texts:
         train_df, test_df = clean_texts_in_set(train_df, test_df)
 
-    if vectorization == "simple":
+    if "simple" in vectorization:
         train_vectors, test_vectors = simple_vectorize(train_df["text"], test_df["text"])
-    elif vectorization == "tfidf":
+    elif "tfidf" in vectorization:
         train_vectors, test_vectors = tfidf_vectorize(train_df["text"], test_df["text"])
-
+    else:
+        print("no vectorization selected")
     if use_LSA:
         train_vectors, test_vectors = LSA(train_vectors, test_vectors)
 

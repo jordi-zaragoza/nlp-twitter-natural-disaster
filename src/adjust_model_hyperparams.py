@@ -6,12 +6,14 @@ test_df = pd.read_csv("../data/test.csv")
 
 model_params = {
     'mix_texts': False,
-    'clean_texts': True,
-    'vectorization': 'tfidf',
+    'clean_texts': False,
+    'vectorization': 'simple',
     'use_LSA': False,
     'model_name': 'logistic'
 }
 
-# print(get_model_stats(train_df, test_df, model_params))
+print(get_model_stats(train_df, test_df, model_params))
 
 clf, train_vectors, test_vectors = get_model(train_df, test_df, model_params)
+
+submission(clf, test_vectors)

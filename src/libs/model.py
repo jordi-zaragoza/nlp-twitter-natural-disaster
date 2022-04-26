@@ -1,7 +1,7 @@
 from sklearn import linear_model, model_selection
 from sklearn.ensemble import RandomForestClassifier, GradientBoostingClassifier, AdaBoostClassifier
 from sklearn.neighbors import KNeighborsClassifier
-from sklearn.gaussian_process import GaussianProcessClassifier
+from sklearn.svm import SVC
 from sklearn.neural_network import MLPClassifier
 from libs.submission import *
 from libs.preprocess import *
@@ -35,6 +35,7 @@ def get_model(train_df, test_df, model_params):
 
 def model(X, y, model_name):
     clf = model_select(model_name)
+    print("Training model: ", model_name)
     clf.fit(X, y)
     return clf
 
@@ -46,9 +47,9 @@ def model_select(model_name):
         'random_forest': lambda: RandomForestClassifier(),
         'gradient_boosting': lambda: GradientBoostingClassifier(),
         'NN': lambda: MLPClassifier(),
-        'gaussian_process': GaussianProcessClassifier(),
-        'Knn': KNeighborsClassifier(),
-        'ada_boost': AdaBoostClassifier(),
+        'svc': lambda: SVC(),
+        'Knn': lambda: KNeighborsClassifier(),
+        'ada_boost': lambda: AdaBoostClassifier(),
     }.get(model_name, lambda: 'Not a valid model name')()
 
 
